@@ -1,4 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/useAuthStore'
+
+const requireAuth = (to: any,from: any,next: any) => {
+  let store = useAuthStore()
+  if(!store.id) {
+    next({name: 'home'})
+  } else {
+    next()
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +26,8 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/DashboardView.vue')
+      component: () => import('../views/DashboardView.vue'),
+      beforeEnter: requireAuth
     }
   ]
 })
