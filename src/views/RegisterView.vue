@@ -1,4 +1,5 @@
 <script lang="ts">
+import { RouterLink } from 'vue-router';
 import { useAuthStore } from '@/stores/useAuthStore';
 import Button from '@/components/Button.vue';
 import TextInput from '@/components/TextInput.vue';
@@ -17,7 +18,8 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      loading: false
     }
   },
   methods: {
@@ -35,11 +37,14 @@ export default {
     },
     handleSubmit: async function (event: MouseEvent) {
       try {
+        this.loading = true
         await store.signup({ email: this.email, password: this.password })
       } catch (err: unknown) {
         setTimeout(() => {
           store.error = null
         }, 5000)
+      } finally {
+        this.loading = false
       }
     }
   }
@@ -55,7 +60,10 @@ export default {
     <div class="mb-6 md:w-full">
       <TextInput label="Password" type="password" :value="password" :onChangeHandler="onPasswordChange" />
     </div>
-    <Button label="Create" color="green" :clickHandler="handleSubmit"></Button>
+    <Button label="Create" color="green" :loading="loading" :clickHandler="handleSubmit"></Button>
+    <p class="text-sm font-light text-gray-400">
+      Already have an account? <RouterLink to="/" class="font-medium hover:underline" style="color:#21bd58">Sign in</RouterLink>
+    </p>
   </Card>
 </template>
 

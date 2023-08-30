@@ -7,8 +7,13 @@ export default {
 </script>
 
 <template>
-    <div class="w-full bg-white rounded shadow-lg p-8 m-4 md:max-w-sm md:mx-auto">
-        <span class="block w-full text-xl uppercase font-bold mb-4">{{ title }}</span>
-        <slot></slot>
+    <div class="w-full bg-gray-800 rounded shadow-lg md:max-w-sm md:mx-auto" style="position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <span class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-white">{{ title }}</span>
+            <slot></slot>
+        </div>
     </div>
 </template>

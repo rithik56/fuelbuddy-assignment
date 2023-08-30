@@ -11,13 +11,15 @@ type Story = StoryObj<typeof Button>;
 export const Login: Story = {
     args: {
         label: 'Login',
-        color: 'green'
+        color: 'green',
+        loading: false
     },
 };
 
 export const Signup: Story = {
     args: {
         label: 'Create',
-        color: 'green'
+        color: 'green',
+        loading: false
     },
 };

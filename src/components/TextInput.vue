@@ -12,10 +12,10 @@ export default {
 </script>
 
 <template>
-    <label class="block text-xs mb-1">{{ label }}</label>
-    <input class="w-full border rounded p-2 outline-none focus:shadow-outline" :type="type" :value="value" @input="(event) => {
+    <label class="block mb-2 text-sm font-medium text-white">{{ label }}</label>
+    <input class="border sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" :type="type" :value="value" @input="(event) => {
         if (onChangeHandler) {
             onChangeHandler(event)
         }
-    }" placeholder="Email">
+    }" :placeholder="label">
 </template>

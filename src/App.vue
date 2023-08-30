@@ -13,6 +13,7 @@ onMounted(() => {
 </script>
 
 <template>
+  
   <Layout>
     <RouterView />
   </Layout>
