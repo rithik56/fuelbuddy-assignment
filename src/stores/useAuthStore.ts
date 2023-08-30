@@ -59,7 +59,6 @@ export const useAuthStore = defineStore({
     async login({ email, password }: { email: string, password: string }) {
       try {
         const res = await signInWithEmailAndPassword(auth, email, password)
-        console.log(res)
         if (res) {
           router.replace({ name: 'dashboard' })
         }
